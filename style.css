@@ -4,12 +4,26 @@
 
 #clicker_container{
     display: flex;
+    flex-direction: column;
     border: 2px solid;
-    width: 40%;
     height: 90vh;
+    width: 40%;
+}
+
+#click_per_second{
+    font-size: 5em;
     text-align: center;
-    align-items: center;
-    justify-content: center;
+}
+
+#skibidi_button{
+    height: 400px;
+    margin-top: 40%;
+    align-self: center;
+}
+
+#skibidi{
+    height: 400px;
+    width: 400px;
 }
 
 #UI{
@@ -27,5 +41,9 @@
 }
 
 .button{
+    font-size: 2em;
+}
+
+#upgrade1{
     font-size: 2em;
 }
