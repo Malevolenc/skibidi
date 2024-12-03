@@ -1,0 +1,31 @@
+#body{
+    display: flex;
+}
+
+#clicker_container{
+    display: flex;
+    border: 2px solid;
+    width: 40%;
+    height: 90vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#UI{
+    border: 2px solid;
+    width: 60%;
+    height: 90vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#counter{
+    font-size: 8em;
+    justify-content: center;
+}
+
+.button{
+    font-size: 2em;
+}
