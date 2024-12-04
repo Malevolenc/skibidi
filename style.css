@@ -7,7 +7,7 @@
     flex-direction: column;
     border: 2px solid;
     height: 90vh;
-    width: 40%;
+    width: 50%;
 }
 
 #click_per_second{
@@ -16,16 +16,15 @@
 }
 
 #skibidi_button{
-    max-height: 400px;
-    margin-top: 40%;
+    height: 400px;
+    margin-top: 40px;
     align-self: center;
     overflow: hidden;
     
 }
 
 #skibidi{
-    max-height: 400px;
-    overflow: hidden;
+    height: 200px;
 
 }
 
@@ -53,4 +52,23 @@
 
 .settings{
     font-size: 2em;
+}
+
+@media (min-width: 400px) {
+    #clicker_container{
+        overflow: hidden;
+    }
+
+    #click_per_second{
+        font-size: 3em;
+    }
+
+    #counter{
+        font-size: 3em;
+    }
+
+    #skibidi_button{
+        width: 200px;
+        height: 200px;
+    }
 }
