@@ -76,10 +76,12 @@ class Game{
     save(){
         let moneyString = (this.money).toString();
         localStorage.setItem("Money", moneyString);
+        console.log(moneyString)
     }
 
     load(){
-        if(this.money === 0){
+        let temporaryMoney = parseFloat(localStorage.getItem("Money"))
+        if(temporaryMoney === 0){
             window.alert("Error!")
         }
         else{

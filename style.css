@@ -16,14 +16,17 @@
 }
 
 #skibidi_button{
-    height: 400px;
+    max-height: 400px;
     margin-top: 40%;
     align-self: center;
+    overflow: hidden;
+    
 }
 
 #skibidi{
-    height: 400px;
-    width: 400px;
+    max-height: 400px;
+    overflow: hidden;
+
 }
 
 #UI{
