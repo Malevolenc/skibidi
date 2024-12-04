@@ -80,8 +80,14 @@ class Game{
     }
 
     load(){
-        this.money = parseFloat(localStorage.getItem("Money"));
-        counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
+        if(this.money === 0){
+            window.alert("Error!")
+        }
+        else{
+            this.money = parseFloat(localStorage.getItem("Money"));
+            counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
+        }
+
     }
 }
 
