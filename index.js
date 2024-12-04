@@ -76,7 +76,6 @@ class Game{
     save(){
         let moneyString = (this.money).toString();
         localStorage.setItem("Money", moneyString);
-        console.log(moneyString)
     }
 
     load(){
