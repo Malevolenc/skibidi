@@ -1,10 +1,16 @@
 const button = document.getElementById("skibidi_button");
 const counter = document.getElementById("counter");
+
 const button1 = document.getElementById("button1");
 const upgrade1 = document.getElementById("upgrade1");
+
 const button2 = document.getElementById("button2");
 const upgrade2 = document.getElementById("upgrade2");
+
 const cps = document.getElementById("click_per_second");
+
+const save = document.getElementById("save");
+const load = document.getElementById("load");
 
 class Game{
     constructor(money, increment){
@@ -59,19 +65,32 @@ class Game{
 
 
 
-            cps.textContent = `${this.increment} Skibidi Bucks Per Click`;;
+            cps.textContent = `${this.increment} Skibidi Bucks Per Click`;
             button2.textContent = `${this.upgrade2Cost.toFixed(1)} Skibidi Bucks`;
             counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
             upgrade2.textContent = `Upgrade Diddy Fest | LVL: ${this.upgrade2Level}`
 
         }
     }
+
+    save(){
+        let moneyString = (this.money).toString();
+        localStorage.setItem("Money", moneyString);
+        console.log(moneyString)
+    }
+
+    load(){
+        this.money = parseFloat(localStorage.getItem("Money"));
+        counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
+    }
 }
+
 
 let game = new Game(0, 1)
 
 button.onclick = function(){
     game.click();
+    
     
 }
 
@@ -84,3 +103,12 @@ button2.onclick = function(){
     game.upgrade2();
 
 }
+
+save.onclick = function(){
+    game.save();
+}
+
+load.onclick = function(){
+    game.load();
+}
+
