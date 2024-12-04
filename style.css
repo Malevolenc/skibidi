@@ -32,7 +32,7 @@
     height: 90vh;
     text-align: center;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 #counter{
@@ -44,6 +44,8 @@
     font-size: 2em;
 }
 
-#upgrade1{
+.labels{
     font-size: 2em;
 }
+
+

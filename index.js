@@ -2,35 +2,85 @@ const button = document.getElementById("skibidi_button");
 const counter = document.getElementById("counter");
 const button1 = document.getElementById("button1");
 const upgrade1 = document.getElementById("upgrade1");
+const button2 = document.getElementById("button2");
+const upgrade2 = document.getElementById("upgrade2");
 const cps = document.getElementById("click_per_second");
 
-let value = 0;
-let increment = 1;
-let cost = 10;
-let upgrade = 1
+class Game{
+    constructor(money, increment){
+        this.money = money;
+        this.increment = increment;
 
+        this.upgrade1Cost = 100;
+        this.upgrade1Level = 1;
+
+        this.upgrade2Cost = 1000;
+        this.upgrade2Level = 1;
+    }
+
+    click(){
+        this.money += this.increment;
+        counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`
+    }
+
+    upgrade1(){
+        if(this.money < this.upgrade1Cost){
+            window.alert(`You need ${((this.money - this.upgrade1Cost)*-1).toFixed(1)} Skibidi Bucks to afford this upgrade`)
+        }
+        else{
+            this.money -= this.upgrade1Cost;
+            this.increment += 1;
+
+
+            this.upgrade1Level++;
+            this.upgrade1Cost += (this.upgrade1Cost * 0.5);
+
+
+
+            cps.textContent = `${this.increment} Skibidi Bucks Per Click`;;
+            button1.textContent = `${this.upgrade1Cost.toFixed(1)} Skibidi Bucks`;
+            counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
+            upgrade1.textContent = `Upgrade Toilet Flush | LVL: ${this.upgrade1Level}`
+
+        }
+    }
+
+    upgrade2(){
+        if(this.money < this.upgrade2Cost){
+            window.alert(`You need ${((this.money - this.upgrade2Cost)*-1).toFixed(1)} Skibidi Bucks to afford this upgrade`)
+        }
+        else{
+            this.money -= this.upgrade2Cost;
+            this.increment += 5;
+
+
+            this.upgrade2Level++;
+            this.upgrade2Cost += (this.upgrade2Cost * 0.5);
+
+
+
+            cps.textContent = `${this.increment} Skibidi Bucks Per Click`;;
+            button2.textContent = `${this.upgrade2Cost.toFixed(1)} Skibidi Bucks`;
+            counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
+            upgrade2.textContent = `Upgrade Diddy Fest | LVL: ${this.upgrade2Level}`
+
+        }
+    }
+}
+
+let game = new Game(0, 1)
 
 button.onclick = function(){
-    value += increment
-    counter.textContent = `${value.toFixed(1)} Skibidi Bucks`;
+    game.click();
+    
 }
-
 
 button1.onclick = function(){
-    if(value < cost){
-        window.alert(`You need ${(cost-value).toFixed(1)} Skibidi Bucks to upgrade!`);
-    }
-    else{
-        value-=cost;
-        increment++;
-        cost += cost * 0.5;
-        upgrade++
-    }
-
-    button1.textContent = `${cost.toFixed(1)} Skibidi Bucks`
-    upgrade1.textContent = `Upgrade Toilet Touch | LVL: ${upgrade}`
-    counter.textContent = `${value.toFixed(1)} Skibidi Bucks`;
-    cps.textContent = `${increment} Skibidi Bucks Per Click`
+    game.upgrade1();
 
 }
 
+button2.onclick = function(){
+    game.upgrade2();
+
+}
