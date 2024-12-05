@@ -22,6 +22,8 @@ class Game{
 
         this.upgrade2Cost = 1000;
         this.upgrade2Level = 1;
+
+        this.saved = "false";
     }
 
     click(){
@@ -43,17 +45,17 @@ class Game{
 
 
 
-            cps.textContent = `${this.increment} Skibidi Bucks Per Click`;;
+            cps.textContent = `${this.increment} Skibidi Bucks Per Click`;
             button1.textContent = `${this.upgrade1Cost.toFixed(1)} Skibidi Bucks`;
             counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
-            upgrade1.textContent = `Upgrade Toilet Flush | LVL: ${this.upgrade1Level}`
+            upgrade1.textContent = `Upgrade Toilet Flush | LVL: ${this.upgrade1Level}`;
 
         }
     }
 
     upgrade2(){
         if(this.money < this.upgrade2Cost){
-            window.alert(`You need ${((this.money - this.upgrade2Cost)*-1).toFixed(1)} Skibidi Bucks to afford this upgrade`)
+            window.alert(`You need ${((this.money - this.upgrade2Cost)*-1).toFixed(1)} Skibidi Bucks to afford this upgrade`);
         }
         else{
             this.money -= this.upgrade2Cost;
@@ -74,21 +76,56 @@ class Game{
     }
 
     save(){
-        let moneyString = (this.money).toString();
+        const moneyString = (this.money).toString();
+        const incrementString = (this.increment).toString();
+
+        const upgrade1CostString = (this.upgrade1Cost).toString();
+        const upgrade1LevelString = (this.upgrade1Level).toString();
+
+        const upgrade2CostString = (this.upgrade2Cost).toString();
+        const upgrade2LevelString = (this.upgrade2Level).toString();
+
         localStorage.setItem("Money", moneyString);
-        console.log(moneyString)
+        localStorage.setItem("Increment", incrementString);
+
+        localStorage.setItem("Upgrade1Cost",upgrade1CostString);
+        localStorage.setItem("Upgrade1Level",upgrade1LevelString);
+
+        localStorage.setItem("Upgrade2Cost",upgrade2CostString);
+        localStorage.setItem("Upgrade2Level",upgrade2LevelString);
+
+        this.saved = "true";
+        localStorage.setItem("Saved", this.saved);
+
     }
 
     load(){
-        let temporaryMoney = parseFloat(localStorage.getItem("Money"))
-        if(temporaryMoney === 0){
-            window.alert("Error!")
-        }
-        else{
-            this.money = parseFloat(localStorage.getItem("Money"));
-            counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
+        this.saved = localStorage.getItem("Saved");
+        if(this.saved === "false"){
+            window.alert(`Please save the game first!`);
         }
 
+        else{
+            this.money = parseFloat(localStorage.getItem("Money"));
+            this.increment = parseFloat(localStorage.getItem("Increment"));
+    
+            this.upgrade1Cost = parseFloat(localStorage.getItem("Upgrade1Cost"));
+            this.upgrade1Level = parseFloat(localStorage.getItem("Upgrade1Level"));
+    
+            this.upgrade2Cost = parseFloat(localStorage.getItem("Upgrade2Cost"));
+            this.upgrade2Level = parseFloat(localStorage.getItem("Upgrade2Level"));
+    
+    
+    
+            counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
+            cps.textContent = `${this.increment} Skibidi Bucks Per Click`;
+            
+            button1.textContent = `${this.upgrade1Cost.toFixed(1)} Skibidi Bucks`;
+            upgrade1.textContent = `Upgrade Toilet Flush | LVL: ${this.upgrade1Level}`;
+    
+            button2.textContent = `${this.upgrade2Cost.toFixed(1)} Skibidi Bucks`;
+            upgrade2.textContent = `Upgrade Diddy Fest | LVL: ${this.upgrade2Level}`;
+        }
     }
 }
 
@@ -97,7 +134,6 @@ let game = new Game(0, 1)
 
 button.onclick = function(){
     game.click();
-    
     
 }
 
