@@ -11,6 +11,7 @@ const cps = document.getElementById("click_per_second");
 
 const save = document.getElementById("save");
 const load = document.getElementById("load");
+const reset = document.getElementById("reset");
 
 class Game{
     constructor(money, increment){
@@ -127,6 +128,42 @@ class Game{
             upgrade2.textContent = `Upgrade Diddy Fest | LVL: ${this.upgrade2Level}`;
         }
     }
+
+    reset(){
+        const resetValues = "0";
+
+        localStorage.setItem("Money", resetValues);
+        localStorage.setItem("Increment", "1");
+
+        localStorage.setItem("Upgrade1Cost","100");
+        localStorage.setItem("Upgrade1Level","1");
+
+        localStorage.setItem("Upgrade2Cost","1000");
+        localStorage.setItem("Upgrade2Level","1");
+
+        localStorage.setItem("Saved", "false");
+
+
+        this.money = parseFloat(localStorage.getItem("Money"));
+        this.increment = parseFloat(localStorage.getItem("Increment"));
+
+        this.upgrade1Cost = parseFloat(localStorage.getItem("Upgrade1Cost"));
+        this.upgrade1Level = parseFloat(localStorage.getItem("Upgrade1Level"));
+
+        this.upgrade2Cost = parseFloat(localStorage.getItem("Upgrade2Cost"));
+        this.upgrade2Level = parseFloat(localStorage.getItem("Upgrade2Level"));
+
+        this.saved = localStorage.getItem("Saved");
+
+        counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
+        cps.textContent = `${this.increment} Skibidi Bucks Per Click`;
+        
+        button1.textContent = `${this.upgrade1Cost.toFixed(1)} Skibidi Bucks`;
+        upgrade1.textContent = `Upgrade Toilet Flush | LVL: ${this.upgrade1Level}`;
+
+        button2.textContent = `${this.upgrade2Cost.toFixed(1)} Skibidi Bucks`;
+        upgrade2.textContent = `Upgrade Diddy Fest | LVL: ${this.upgrade2Level}`;
+    }
 }
 
 
@@ -153,5 +190,9 @@ save.onclick = function(){
 
 load.onclick = function(){
     game.load();
+}
+
+reset.onclick = function(){
+    game.reset();
 }
 
