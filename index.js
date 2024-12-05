@@ -25,11 +25,22 @@ class Game{
         this.upgrade2Level = 1;
 
         this.saved = "false";
+
+        this.stats = [
+            this.money,
+            this.increment,
+            this.upgrade1Cost,
+            this.upgrade1Level,
+            this.upgrade2Cost,
+            this.upgrade2Level,
+            this.saved,
+        ]
     }
 
     click(){
         this.money += this.increment;
-        counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`
+        counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
+
     }
 
     upgrade1(){
@@ -167,7 +178,8 @@ class Game{
 }
 
 
-let game = new Game(0, 1)
+let game = new Game(0, 1);
+
 
 button.onclick = function(){
     game.click();
