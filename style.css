@@ -89,3 +89,8 @@
         font-size: 1.25em;
     }
 }
+
+#setting_button{
+    font-size: 2em;
+    margin-right: 0px;
+}
