@@ -13,6 +13,10 @@ const upgrade3 = document.getElementById("upgrade3");
 const mpc = document.getElementById("money_per_click");
 const cps = document.getElementById("money_per_second");
 
+const options = document.getElementById("options");
+const settingMenu = document.getElementById("settingMenu");
+const closeMenu = document.getElementById("close");
+
 const save = document.getElementById("save");
 const load = document.getElementById("load");
 const reset = document.getElementById("reset");
@@ -279,6 +283,13 @@ reset.onclick = function(){
 function IdleMoney(){
     game.money += game.moneyPerSecond;
     counter.textContent = `${game.money.toFixed(1)} Skibidi Bucks`;
+}
+
+options.addEventListener("click", activateMenu);
+closeMenu.addEventListener("click", activateMenu);
+
+function activateMenu(){
+    settingMenu.classList.toggle("open");
 }
 
 setInterval(IdleMoney,1000);
