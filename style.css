@@ -57,15 +57,16 @@
     font-size: 2em;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     #clicker_container{
         overflow: hidden;
         width: 100%;
+        height: 150%;
     }
 
     #UI{
-        overflow: hidden;
         width: 100%;
+        height: 200%;
     }
 
     #click_per_second{
@@ -87,6 +88,39 @@
 
     .settings{
         font-size: 1.25em;
+    }
+}
+
+@media (max-width: 1000px) {
+    #clicker_container{
+        overflow: hidden;
+        width: 100%;
+    }
+
+    #UI{
+        width: 100%;
+        height: 200%;
+    }
+
+    #click_per_second{
+        font-size: 2.5em;
+    }
+
+    #counter{
+        font-size: 1.5em;
+    }
+
+    #skibidi_button{
+        width: 300px;
+        height: 300px;
+    }
+
+    .labels{
+        font-size: 1.5em;
+    }
+
+    .settings{
+        font-size: 1.5em;
     }
 }
 
