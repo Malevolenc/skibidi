@@ -250,6 +250,7 @@
     border: 10px, solid;
     text-align: center;
     margin: auto;
+    position: absolute;
     background-color: white;
     visibility: hidden;
     overflow: hidden;
