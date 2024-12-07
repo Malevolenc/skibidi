@@ -51,6 +51,10 @@
     font-size: 2em;
 }
 
+#rebirth_button{
+    font-size: 2em;
+}
+
 .labels{
     font-size: 2em;
 }
@@ -98,6 +102,52 @@
         font-size: 2em;
         border: 3px, solid;
     }
+
+    #bossFight{
+        font-size: 1em;
+        height: 150px;
+        width: 150px;
+    }
+
+    #bossFightText{
+        font-size: 0.5em;
+    }
+
+    #kanye{
+        max-width: 100px;
+        max-height: 100px;
+    }
+    
+    #bossFightOption1{
+        height: 40px;
+        width: 40px;
+    }
+
+    #bossFightOption2{
+        height: 40px;
+        width: 40px;
+    }
+
+    #bossFightOption3{
+        height: 40px;
+        width: 40px;
+    }
+
+    #bossFightOption4{
+        height: 40px;
+        width: 40px;
+    }
+
+    #bossFightOption5{
+        height: 40px;
+        width: 40px;
+    }
+
+    #bossFightOption6{
+        height: 40px;
+        width: 40px;
+    }
+    
 }
 
 @media (max-width: 1000px) {
@@ -143,6 +193,52 @@
     #close{
         font-size: 0.5em;
     }
+
+    #bossFight{
+        height: 300px;
+        width: 300px;
+    }
+
+    #bossFightText{
+        font-size: 0.3em;
+    }
+
+    #bossFightOption1{
+        height: 80px;
+        width: 80px;
+    }
+
+    #bossFightOption2{
+        height: 80px;
+        width: 80px;
+    }
+
+    #bossFightOption3{
+        height: 80px;
+        width: 80px;
+    }
+
+    #bossFightOption4{
+        height: 80px;
+        width: 80px;
+    }
+
+    #bossFightOption5{
+        height: 80px;
+        width: 80px;
+    }
+
+    #bossFightOption6{
+        height: 80px;
+        width: 80px;
+    }
+
+    #kanye{
+        width: 200px;
+        height: 200px;
+    }
+
+
 }
 
 #setting_button{
@@ -159,7 +255,8 @@
     position: absolute;
     margin: auto;
     background-color: white;
-    visibility: hidden
+    visibility: hidden;
+    overflow: hidden;
     
 }
 
@@ -181,3 +278,33 @@
     font-size: 1em;
 }
 
+#bossFight{
+    font-size: 3em;
+    height: 1000px;
+    width: 1300px;
+    border: 10px, solid;
+    text-align: center;
+    position: absolute;
+    margin: auto;
+    background-color: white;
+    visibility: hidden;
+}
+
+#kanye{
+    width: 300px;
+    height: 300px;
+}
+
+.bossFightOptions{
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+
+.correct{
+    border: 5px, solid, green;
+}
+
+.wrong{
+    border: 5px, solid, red;
+}
