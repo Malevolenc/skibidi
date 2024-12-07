@@ -50,7 +50,7 @@ class Game{
         this.upgrade3Cost = 100;
         this.upgrade3Level = 0;
 
-        this.rebirthCost = 10;
+        this.rebirthCost = 10000;
         this.rebirthCount = 0;
         this.bossFightStatus = false;
 
@@ -365,7 +365,7 @@ class Game{
         localStorage.setItem("Upgrade3Cost","100");
         localStorage.setItem("Upgrade3Level","0");
 
-        localStorage.setItem("rebirthCost", "10");
+        localStorage.setItem("rebirthCost", "10000");
         localStorage.setItem("rebirthCount", "0");
 
         localStorage.setItem("Saved", "false");
