@@ -418,7 +418,7 @@ class Game{
         localStorage.setItem("Upgrade2Cost","5000");
         localStorage.setItem("Upgrade2Level","0");
 
-        localStorage.setItem("Upgrade3Cost","100");
+        localStorage.setItem("Upgrade3Cost","10000");
         localStorage.setItem("Upgrade3Level","0");
 
         this.money = parseFloat(localStorage.getItem("Money"));
