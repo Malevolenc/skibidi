@@ -104,13 +104,9 @@
     }
 
     #bossFight{
-        font-size: 1em;
-        height: 150px;
-        width: 150px;
-    }
-
-    #bossFightText{
         font-size: 0.5em;
+        height: 100px;
+        width: 100px;
     }
 
     #kanye{
@@ -197,6 +193,7 @@
     #bossFight{
         height: 300px;
         width: 300px;
+        position: relative;
     }
 
     #bossFightText{
@@ -252,7 +249,6 @@
     width: 600px;
     border: 10px, solid;
     text-align: center;
-    position: absolute;
     margin: auto;
     background-color: white;
     visibility: hidden;
@@ -280,14 +276,19 @@
 
 #bossFight{
     font-size: 3em;
-    height: 1000px;
-    width: 1300px;
+    height: 1200px;
+    width: 600px;
     border: 10px, solid;
     text-align: center;
     position: absolute;
-    margin: auto;
     background-color: white;
     visibility: hidden;
+
+    align-items: center;
+}
+
+#bossFightText{
+    font-size: 0.5em;
 }
 
 #kanye{
@@ -296,9 +297,10 @@
 }
 
 .bossFightOptions{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .correct{
