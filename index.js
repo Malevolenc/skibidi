@@ -59,7 +59,7 @@ class Game{
 
     click(){
         this.money += this.increment * this.multiplier;
-        counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
+        counter.textContent = `${this.money.toFixed(1) * this.multiplier} Skibidi Bucks`;
 
     }
 
