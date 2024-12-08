@@ -50,7 +50,7 @@ class Game{
         this.upgrade3Cost = 100;
         this.upgrade3Level = 0;
 
-        this.rebirthCost = 10;
+        this.rebirthCost = 10000;
         this.rebirthCount = 0;
         this.bossFightStatus = false;
 
