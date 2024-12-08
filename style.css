@@ -192,8 +192,7 @@
 
     #bossFight{
         height: 300px;
-        width: 300px;
-        position: relative;
+        width: 100vh;
     }
 
     #bossFightText{
@@ -231,8 +230,7 @@
     }
 
     #kanye{
-        width: 200px;
-        height: 200px;
+        width: 40px;
     }
 
 
@@ -277,15 +275,12 @@
 
 #bossFight{
     font-size: 3em;
-    height: 1200px;
-    width: 600px;
-    border: 10px, solid;
+    height: 100vh;
+    width: 50%;
+    border: 2px, solid;
     text-align: center;
-    position: absolute;
     background-color: white;
     visibility: hidden;
-
-    align-items: center;
 }
 
 #bossFightText{

@@ -50,7 +50,7 @@ class Game{
         this.upgrade3Cost = 100;
         this.upgrade3Level = 0;
 
-        this.rebirthCost = 10000;
+        this.rebirthCost = 10;
         this.rebirthCount = 0;
         this.bossFightStatus = false;
 
@@ -59,7 +59,7 @@ class Game{
 
     click(){
         this.money += this.increment * this.multiplier;
-        counter.textContent = `${this.money.toFixed(1) * this.multiplier} Skibidi Bucks`;
+        counter.textContent = `${(this.money * this.multiplier).toFixed(1)} Skibidi Bucks`;
 
     }
 
