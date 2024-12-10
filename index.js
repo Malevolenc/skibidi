@@ -50,7 +50,7 @@ class Game{
         this.upgrade3Cost = 100;
         this.upgrade3Level = 0;
 
-        this.rebirthCost = 10000;
+        this.rebirthCost = 10;
         this.rebirthCount = 0;
         this.bossFightStatus = false;
 
@@ -59,7 +59,7 @@ class Game{
 
     click(){
         this.money += this.increment * this.multiplier;
-        counter.textContent = `${(this.money * this.multiplier).toFixed(1)} Skibidi Bucks`;
+        counter.textContent = `${(this.money).toFixed(1)} Skibidi Bucks`;
 
     }
 
@@ -132,7 +132,7 @@ class Game{
 
     rebirth(){
         if(this.money < this.rebirthCost){
-            window.alert(`You need ${this.rebirthCost - this.money} Skibidi Bucks to fight Kanye!`)
+            window.alert(`You need ${(this.rebirthCost - this.money).toFixed(1)} Skibidi Bucks to fight Kanye!`)
         }
 
         else{
@@ -151,115 +151,45 @@ class Game{
 
             let chosenButton = buttonList[Math.floor((Math.random()*6))];
 
-            if(guesses == 1){
-                bossOption1.onclick = function(){
-                    if(bossOption1 == chosenButton){
-                        window.alert("Correct!");
-                        bossFight.style.visibility = "hidden";
-                        game.multiplier += 1;
-                        game.rebirthCount += 1;
-                        rebirthLevel.textContent = `Rebirth | ${game.rebirthCount}`;
-                        mm.textContent = `Multiplier: ${game.multiplier}x`;
-                        game.resetRebirth();
-                    }
-        
-                    else{
-                        window.alert("Incorrect!");
-                        guesses--;
-                        bossFight.style.visibility = "hidden";
-                    }
-                }
-    
-                bossOption2.onclick = function(){
-                    if(bossOption2 == chosenButton){
-                        window.alert("Correct!");
-                        bossFight.style.visibility = "hidden";
-                        game.multiplier += 1;
-                        game.rebirthCount += 1;
-                        rebirthLevel.textContent = `Rebirth | ${game.rebirthCount}`;
-                        mm.textContent = `Multiplier: ${game.multiplier}x`;
-                        game.resetRebirth();
-                    }
-        
-                    else{
-                        window.alert("Incorrect!");
-                        guesses--;
-                        bossFight.style.visibility = "hidden";
-                    }
-                }
-    
-                bossOption3.onclick = function(){
-                    if(bossOption3 == chosenButton){
-                        window.alert("Correct!");
-                        bossFight.style.visibility = "hidden";
-                        game.multiplier += 1;
-                        game.rebirthCount += 1;
-                        rebirthLevel.textContent = `Rebirth | ${game.rebirthCount}`;
-                        mm.textContent = `Multiplier: ${game.multiplier}x`;
-                        game.resetRebirth();
-                    }
-        
-                    else{
-                        window.alert("Incorrect!");
-                        guesses--;
-                        bossFight.style.visibility = "hidden";
-                    }
-                }
-    
-                bossOption4.onclick = function(){
-                    if(bossOption4 == chosenButton){
-                        window.alert("Correct!");
-                        bossFight.style.visibility = "hidden";
-                        game.multiplier += 1;
-                        game.rebirthCount += 1;
-                        rebirthLevel.textContent = `Rebirth | ${game.rebirthCount}`;
-                        mm.textContent = `Multiplier: ${game.multiplier}x`;
-                        game.resetRebirth();
-                    }
-        
-                    else{
-                        window.alert("Incorrect!");
-                        guesses--;
-                        bossFight.style.visibility = "hidden";
-                    }
-                }
-    
-                bossOption5.onclick = function(){
-                    if(bossOption5 == chosenButton){
-                        window.alert("Correct!");
-                        bossFight.style.visibility = "hidden";
-                        game.multiplier += 1;
-                        game.rebirthCount += 1;
-                        rebirthLevel.textContent = `Rebirth | ${game.rebirthCount}`;
-                        mm.textContent = `Multiplier: ${game.multiplier}x`;
-                        game.resetRebirth();
-                    }
-        
-                    else{
-                        window.alert("Incorrect!");
-                        guesses--;
-                        bossFight.style.visibility = "hidden";
-                    }
-                }
-    
-                bossOption6.onclick = function(){
-                    if(bossOption6 == chosenButton){
-                        window.alert("Correct!");
-                        bossFight.style.visibility = "hidden";
-                        game.multiplier += 1;
-                        game.rebirthCount += 1;
-                        rebirthLevel.textContent = `Rebirth | ${game.rebirthCount}`;
-                        mm.textContent = `Multiplier: ${game.multiplier}x`;
-                        game.resetRebirth();
-                    }
-        
-                    else{
-                        window.alert("Incorrect!");
-                        guesses--;
-                        bossFight.style.visibility = "hidden";
-                    }
+            function checkCorrectGuess(answer){
+                if(answer === chosenButton){
+                    window.alert("Correct!");
+                    bossFight.style.visibility = "hidden";
+                    game.multiplier += 1;
+                    game.rebirthCount += 1;
+                    rebirthLevel.textContent = `Rebirth | ${game.rebirthCount}`;
+                    mm.textContent = `Multiplier: ${game.multiplier}x`;
+                    game.resetRebirth();
+
                 }
 
+                else{
+                    window.alert("Incorrect!");
+                    guesses--;
+                    bossFight.style.visibility = "hidden";
+                }
+
+            }
+
+            if(guesses == 1){
+                bossOption1.onclick = function(){
+                    checkCorrectGuess(bossOption1);
+                }
+                bossOption2.onclick = function(){
+                    checkCorrectGuess(bossOption2);
+                }
+                bossOption3.onclick = function(){
+                    checkCorrectGuess(bossOption3);
+                }
+                bossOption4.onclick = function(){
+                    checkCorrectGuess(bossOption4);
+                }
+                bossOption5.onclick = function(){
+                    checkCorrectGuess(bossOption5);
+                }
+                bossOption6.onclick = function(){
+                    checkCorrectGuess(bossOption6);
+                }
             }
         }
 
@@ -503,7 +433,5 @@ closeMenu.addEventListener("click", activateMenu);
 function activateMenu(){
     settingMenu.classList.toggle("open");
 }
-
-
 
 setInterval(IdleMoney,500);
