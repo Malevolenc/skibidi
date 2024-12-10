@@ -39,7 +39,9 @@ class Game{
         this.money = money;
         this.increment = increment;
         this.moneyPerSecond = 0;
-        this.multiplier = 1;
+
+        this.buttonImgMultipler = 1;
+        this.rebirthMultiplier = 1;
 
         this.upgrade1Cost = 500;
         this.upgrade1Level = 0;
@@ -50,7 +52,7 @@ class Game{
         this.upgrade3Cost = 100;
         this.upgrade3Level = 0;
 
-        this.rebirthCost = 10000;
+        this.rebirthCost = 10;
         this.rebirthCount = 0;
         this.bossFightStatus = false;
 
@@ -58,8 +60,9 @@ class Game{
     }
 
     click(){
-        this.money += this.increment * this.multiplier;
+        this.money += this.increment * this.rebirthMultiplier;
         counter.textContent = `${(this.money).toFixed(1)} Skibidi Bucks`;
+        mpc.textContent = `${(this.increment).toFixed(1)} Skibidi Bucks Per Click`
 
     }
 
@@ -69,7 +72,7 @@ class Game{
         }
         else{
             this.money -= this.upgrade1Cost;
-            this.increment += 1 * this.multiplier;
+            this.increment = this.increment +  (1 * this.rebirthMultiplier);
 
 
             this.upgrade1Level++;
@@ -77,7 +80,7 @@ class Game{
 
 
 
-            mpc.textContent = `${this.increment} Skibidi Bucks Per Click`;
+            mpc.textContent = `${(this.increment).toFixed(1)} Skibidi Bucks Per Click`;
             cps.textContent = `${this.moneyPerSecond} Skibidi Bucks Per Second`;
             button1.textContent = `${this.upgrade1Cost.toFixed(1)} Skibidi Bucks`;
             counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
@@ -92,7 +95,7 @@ class Game{
         }
         else{
             this.money -= this.upgrade2Cost;
-            this.increment += 3 * this.multiplier;
+            this.increment = this.increment +  (3 * this.rebirthMultiplier);
 
 
             this.upgrade2Level++;
@@ -100,7 +103,7 @@ class Game{
 
 
 
-            mpc.textContent = `${this.increment} Skibidi Bucks Per Click`;
+            mpc.textContent = `${(this.increment).toFixed(1)} Skibidi Bucks Per Click`;
             button2.textContent = `${this.upgrade2Cost.toFixed(1)} Skibidi Bucks`;
             counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
             upgrade2.textContent = `Upgrade Diddy Fest | LVL: ${this.upgrade2Level}`
@@ -114,7 +117,7 @@ class Game{
         }
         else{
             this.money -= this.upgrade3Cost;
-            this.moneyPerSecond += 1 * this.multiplier;
+            this.moneyPerSecond += 1 * this.rebirthMultiplier;
 
 
             this.upgrade3Level++;
@@ -155,10 +158,10 @@ class Game{
                 if(answer === chosenButton){
                     window.alert("Correct!");
                     bossFight.style.visibility = "hidden";
-                    game.multiplier += 1;
+                    game.rebirthMultiplier += 1;
                     game.rebirthCount += 1;
                     rebirthLevel.textContent = `Rebirth | ${game.rebirthCount}`;
-                    mm.textContent = `Multiplier: ${game.multiplier}x`;
+                    mm.textContent = `Multiplier: ${game.rebirthMultiplier}x`;
                     game.resetRebirth();
 
                 }
@@ -199,7 +202,7 @@ class Game{
         const moneyString = (this.money).toString();
         const incrementString = (this.increment).toString();
         const moneyPerSecondString = (this.moneyPerSecond).toString();
-        const multiplierString  = (this.multiplier).toString();
+        const rebirthMultiplierString  = (this.rebirthMultiplier).toString();
 
         const upgrade1CostString = (this.upgrade1Cost).toString();
         const upgrade1LevelString = (this.upgrade1Level).toString();
@@ -216,7 +219,8 @@ class Game{
         localStorage.setItem("Money", moneyString);
         localStorage.setItem("Increment", incrementString);
         localStorage.setItem("MoneyPerSecond", moneyPerSecondString);
-        localStorage.setItem("Multiplier", multiplierString);
+
+        localStorage.setItem("RebirthMultiplier", rebirthMultiplierString);
 
         localStorage.setItem("Upgrade1Cost",upgrade1CostString);
         localStorage.setItem("Upgrade1Level",upgrade1LevelString);
@@ -245,7 +249,7 @@ class Game{
             this.money = parseFloat(localStorage.getItem("Money"));
             this.increment = parseFloat(localStorage.getItem("Increment"));
             this.moneyPerSecond = parseFloat(localStorage.getItem("MoneyPerSecond"));
-            this.multiplier = parseFloat(localStorage.getItem("Multiplier"));
+            this.rebirthMultiplier = parseFloat(localStorage.getItem("RebirthMultiplier"));
     
             this.upgrade1Cost = parseFloat(localStorage.getItem("Upgrade1Cost"));
             this.upgrade1Level = parseFloat(localStorage.getItem("Upgrade1Level"));
@@ -263,7 +267,7 @@ class Game{
             counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
             mpc.textContent = `${this.increment} Skibidi Bucks Per Click`;
             cps.textContent = `${this.moneyPerSecond} Skibidi Bucks Per Second`;
-            mm.textContent = `Multiplier: ${this.multiplier}x`;
+            mm.textContent = `Multiplier: ${this.rebirthMultiplier}x`;
             
             button1.textContent = `${this.upgrade1Cost.toFixed(1)} Skibidi Bucks`;
             upgrade1.textContent = `Upgrade Toilet Flush | LVL: ${this.upgrade1Level}`;
@@ -284,7 +288,7 @@ class Game{
         localStorage.setItem("Money", "0");
         localStorage.setItem("Increment", "1");
         localStorage.setItem("MoneyPerSecond", "0")
-        localStorage.setItem("Multiplier", "1");
+        localStorage.setItem("RebirthMultiplier", "1");
 
         localStorage.setItem("Upgrade1Cost","500");
         localStorage.setItem("Upgrade1Level","0");
@@ -304,7 +308,7 @@ class Game{
         this.money = parseFloat(localStorage.getItem("Money"));
         this.increment = parseFloat(localStorage.getItem("Increment"));
         this.moneyPerSecond = parseFloat(localStorage.getItem("MoneyPerSecond"));
-        this.multiplier = parseFloat(localStorage.getItem("Multiplier"));
+        this.rebirthMultiplier = parseFloat(localStorage.getItem("RebirthMultiplier"));
 
         this.upgrade1Cost = parseFloat(localStorage.getItem("Upgrade1Cost"));
         this.upgrade1Level = parseFloat(localStorage.getItem("Upgrade1Level"));
@@ -323,7 +327,7 @@ class Game{
         counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
         mpc.textContent = `${this.increment} Skibidi Bucks Per Click`;
         cps.textContent = `${this.moneyPerSecond} Skibidi Bucks Per Second`;
-        mm.textContent = `Multiplier: ${this.multiplier}x`;
+        mm.textContent = `Multiplier: ${this.rebirthMultiplier}x`;
         
         button1.textContent = `${this.upgrade1Cost.toFixed(1)} Skibidi Bucks`;
         upgrade1.textContent = `Upgrade Toilet Flush | LVL: ${this.upgrade1Level}`;
