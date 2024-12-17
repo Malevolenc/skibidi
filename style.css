@@ -307,3 +307,24 @@
 .wrong{
     border: 5px, solid, red;
 }
+
+#buttonChanger{
+    font-size: 3em;
+    height: 100vh;
+    width: 50%;
+    border: 2px, solid;
+    background-color: white;
+    position: absolute;
+    visibility: hidden;
+}
+
+#closeImageChanger{
+    font-size: 2em;
+    background-color: red;
+    color: white;
+    display: inline;
+}
+
+.buttonOptionLabel{
+    font-size: 0.5em;
+}

@@ -19,6 +19,9 @@ const rebirthLevel = document.getElementById("rebirthLevel");
 
 const bossFight = document.getElementById("bossFight");
 
+const skibidiOption = document.getElementById("skibidiOption");
+const kanyeOption = document.getElementById("kanyeOption");
+
 const bossOption1 = document.getElementById("bossFightOption1");
 const bossOption2 = document.getElementById("bossFightOption2");
 const bossOption3 = document.getElementById("bossFightOption3");
@@ -34,14 +37,18 @@ const save = document.getElementById("save");
 const load = document.getElementById("load");
 const reset = document.getElementById("reset");
 
+const imageChangeOption = document.getElementById("imageChangeOption");
+const buttonChanger = document.getElementById("buttonChanger");
+const closeImageChanger = document.getElementById("closeImageChanger");
+
 class Game{
     constructor(money, increment){
         this.money = money;
         this.increment = increment;
         this.moneyPerSecond = 0;
 
-        this.buttonImgMultipler = 1;
-        this.rebirthMultiplier = 1;
+        this.totalMultiplier = 1;
+        this.rawMultiplier = this.totalMultiplier;
 
         this.upgrade1Cost = 500;
         this.upgrade1Level = 0;
@@ -52,18 +59,20 @@ class Game{
         this.upgrade3Cost = 100;
         this.upgrade3Level = 0;
 
-        this.rebirthCost = 10;
+        this.rebirthCost = 1000;
         this.rebirthCount = 0;
         this.bossFightStatus = false;
+
+        this.kanyeMultiplier = 2;
+        this.usingKanye = false;
 
         this.saved = "false";
     }
 
     click(){
-        this.money += this.increment * this.rebirthMultiplier;
+        this.money += this.increment * this.totalMultiplier;
         counter.textContent = `${(this.money).toFixed(1)} Skibidi Bucks`;
-        mpc.textContent = `${(this.increment).toFixed(1)} Skibidi Bucks Per Click`
-
+        mpc.textContent = `${(this.increment * this.totalMultiplier).toFixed(1)} Skibidi Bucks Per Click`;
     }
 
     upgrade1(){
@@ -72,7 +81,7 @@ class Game{
         }
         else{
             this.money -= this.upgrade1Cost;
-            this.increment = this.increment +  (1 * this.rebirthMultiplier);
+            this.increment += 1;
 
 
             this.upgrade1Level++;
@@ -80,8 +89,7 @@ class Game{
 
 
 
-            mpc.textContent = `${(this.increment).toFixed(1)} Skibidi Bucks Per Click`;
-            cps.textContent = `${this.moneyPerSecond} Skibidi Bucks Per Second`;
+            mpc.textContent = `${((this.increment).toFixed(1))*this.totalMultiplier} Skibidi Bucks Per Click`;
             button1.textContent = `${this.upgrade1Cost.toFixed(1)} Skibidi Bucks`;
             counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
             upgrade1.textContent = `Upgrade Toilet Flush | LVL: ${this.upgrade1Level}`;
@@ -95,7 +103,7 @@ class Game{
         }
         else{
             this.money -= this.upgrade2Cost;
-            this.increment = this.increment +  (3 * this.rebirthMultiplier);
+            this.increment += 3;
 
 
             this.upgrade2Level++;
@@ -103,7 +111,7 @@ class Game{
 
 
 
-            mpc.textContent = `${(this.increment).toFixed(1)} Skibidi Bucks Per Click`;
+            mpc.textContent = `${((this.increment).toFixed(1))*this.totalMultiplier} Skibidi Bucks Per Click`;
             button2.textContent = `${this.upgrade2Cost.toFixed(1)} Skibidi Bucks`;
             counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
             upgrade2.textContent = `Upgrade Diddy Fest | LVL: ${this.upgrade2Level}`
@@ -117,7 +125,7 @@ class Game{
         }
         else{
             this.money -= this.upgrade3Cost;
-            this.moneyPerSecond += 1 * this.rebirthMultiplier;
+            this.moneyPerSecond += (1 * this.totalMultiplier);
 
 
             this.upgrade3Level++;
@@ -158,10 +166,8 @@ class Game{
                 if(answer === chosenButton){
                     window.alert("Correct!");
                     bossFight.style.visibility = "hidden";
-                    game.rebirthMultiplier += 1;
                     game.rebirthCount += 1;
                     rebirthLevel.textContent = `Rebirth | ${game.rebirthCount}`;
-                    mm.textContent = `Multiplier: ${game.rebirthMultiplier}x`;
                     game.resetRebirth();
 
                 }
@@ -202,7 +208,8 @@ class Game{
         const moneyString = (this.money).toString();
         const incrementString = (this.increment).toString();
         const moneyPerSecondString = (this.moneyPerSecond).toString();
-        const rebirthMultiplierString  = (this.rebirthMultiplier).toString();
+        
+        const totalMultiplierString  = (this.rawMultiplier).toString();
 
         const upgrade1CostString = (this.upgrade1Cost).toString();
         const upgrade1LevelString = (this.upgrade1Level).toString();
@@ -220,7 +227,7 @@ class Game{
         localStorage.setItem("Increment", incrementString);
         localStorage.setItem("MoneyPerSecond", moneyPerSecondString);
 
-        localStorage.setItem("RebirthMultiplier", rebirthMultiplierString);
+        localStorage.setItem("totalMultiplier", totalMultiplierString);
 
         localStorage.setItem("Upgrade1Cost",upgrade1CostString);
         localStorage.setItem("Upgrade1Level",upgrade1LevelString);
@@ -249,7 +256,7 @@ class Game{
             this.money = parseFloat(localStorage.getItem("Money"));
             this.increment = parseFloat(localStorage.getItem("Increment"));
             this.moneyPerSecond = parseFloat(localStorage.getItem("MoneyPerSecond"));
-            this.rebirthMultiplier = parseFloat(localStorage.getItem("RebirthMultiplier"));
+            this.totalMultiplier = parseFloat(localStorage.getItem("totalMultiplier"));
     
             this.upgrade1Cost = parseFloat(localStorage.getItem("Upgrade1Cost"));
             this.upgrade1Level = parseFloat(localStorage.getItem("Upgrade1Level"));
@@ -267,7 +274,7 @@ class Game{
             counter.textContent = `${this.money.toFixed(1)} Skibidi Bucks`;
             mpc.textContent = `${this.increment} Skibidi Bucks Per Click`;
             cps.textContent = `${this.moneyPerSecond} Skibidi Bucks Per Second`;
-            mm.textContent = `Multiplier: ${this.rebirthMultiplier}x`;
+            mm.textContent = `Multiplier: ${this.totalMultiplier}x`;
             
             button1.textContent = `${this.upgrade1Cost.toFixed(1)} Skibidi Bucks`;
             upgrade1.textContent = `Upgrade Toilet Flush | LVL: ${this.upgrade1Level}`;
@@ -288,7 +295,7 @@ class Game{
         localStorage.setItem("Money", "0");
         localStorage.setItem("Increment", "1");
         localStorage.setItem("MoneyPerSecond", "0")
-        localStorage.setItem("RebirthMultiplier", "1");
+        localStorage.setItem("totalMultiplier", "1");
 
         localStorage.setItem("Upgrade1Cost","500");
         localStorage.setItem("Upgrade1Level","0");
@@ -383,6 +390,36 @@ class Game{
 
         this.rebirthCost*=100;
 
+        this.totalMultiplier++;
+        this.rawMultiplier = this.totalMultiplier;
+
+        mm.textContent = `Multiplier: ${this.totalMultiplier}x`;
+
+    }
+
+    changeImage(image){
+        if(image == 'kanye'){
+            if(this.rebirthCount > 0){
+                if(this.usingKanye == false){
+                    button.innerHTML = `<img src="kanye east.png" height="400px" width="400px" margin-top="40px">`;
+                    this.rawMultiplier = this.totalMultiplier;
+                    this.totalMultiplier += this.kanyeMultiplier;
+                    mm.textContent = `Multiplier: ${this.totalMultiplier}x`;
+                    this.usingKanye = 'true';
+                }
+
+            
+                else{
+                    window.alert("You are already using Kanye!")
+                }
+            }
+
+            else{
+                window.alert("Must have atleast 1 rebirth to use!")
+            }
+            
+        }
+
     }
 }
 
@@ -438,4 +475,16 @@ function activateMenu(){
     settingMenu.classList.toggle("open");
 }
 
+imageChangeOption.onclick = function(){
+    buttonChanger.style.visibility = "visible";
+};
+
+closeImageChanger.onclick = function(){
+    buttonChanger.style.visibility = "hidden";
+}
+
 setInterval(IdleMoney,500);
+
+kanyeOption.onclick = function(){
+    game.changeImage('kanye');
+}
